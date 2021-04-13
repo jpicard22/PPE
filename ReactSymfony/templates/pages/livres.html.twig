@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivresController!{% endblock %}
+
+{% block body %}
+<body class="layout">
+    <header>
+        
+        <div class="  navbar shadow-2 grey light-3 navbar shadow-1 grey light-3 justify-content-center" style="height:80px">
+            <a href="{{ path('Pouzy') }}" class="title  ">Biblio-Book Pouzy-Mésangy</a>
+        </div>
+
+        <div class="navbar shadow-1 grey dark-1 justify-content-center">
+            <a href="" class="navbar-brand"><h6>La bibliothèque numérique de votre commune</h6></a>
+        </div>
+
+          <div class="row navbar shadow-1 airforce dark-4">
+
+                <div class="btn small rounded-2  blue press">
+                    <a href="{{ path('connecte') }}" class="connect">Mon espace
+                    </a></div>
+                
+                <div class="btn small rounded-2  blue press">
+                    <a href="{{ path('ajoutlivre') }}" class="connect">Ajouter un livre
+                    </a></div>
+         
+            </div>
+
+    </header>
+
+<main>
+
+
+<div class="bleu">
+<div class="grix xs2 container">
+<div class="col-xs4">
+
+    <div class=" col-xs4">
+        <h4>Les livres disponibles ({{ app.user.livres|length}}) </h4></div>
+
+        {% for livre in app.user.livres %}
+        <div class="col-xs1">Titre : </div>
+        <div class="col-xs3">{{ livre.getTitreL }}</div>
+        <div class="col-xs1">Auteur : </div>
+        <div class="col-xs3">{{ livre.getAuteur }}</div>
+        <div class="col-xs1">Nombre de pages : </div>
+        <div class="col-xs3">{{ livre.getNombrePagesL }}</div>
+        <div class="col-xs1">Edition : </div>
+        <div class="col-xs3">{{ livre.getEditionL }}</div>
+      
+
+        {% endfor %}
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+ 
+</main>
+{% endblock %}

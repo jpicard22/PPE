@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+
+
+ <body class="layout">
+    <header>
+        
+        <div class="  navbar shadow-2 grey light-3 navbar shadow-1 grey light-3 justify-content-center" style="height:80px">
+            <a href="{{ path('Pouzy') }}" class="title  ">Biblio-Book Pouzy-Mésangy</a>
+        </div>
+
+        <div class="navbar shadow-1 grey dark-1 justify-content-center">
+            <a href="" class="navbar-brand"><h6>La bibliothèque numérique de votre commune</h6></a>
+        </div>
+
+          <div class=" navbar shadow-1 airforce dark-4">
+          </div>
+    </header>
+
+    <h2>Reset your password</h2>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Reset password</button>
+    {{ form_end(resetForm) }}
+{% endblock %}

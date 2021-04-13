@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil de {{app.user.firstname}}  {{app.user.name}}{% endblock %}
+
+{% block body %}
+
+<body class="layout">
+    <header>
+        
+        <div class="  navbar shadow-2 grey light-3 navbar shadow-1 grey light-3 justify-content-center" style="height:80px">
+            <a href="{{ path('Pouzy') }}" class="title  ">Biblio-Book Pouzy-Mésangy</a>
+        </div>
+
+        <div class="navbar shadow-1 grey dark-1 justify-content-center">
+            <a href="" class="navbar-brand"><h6>La bibliothèque numérique de votre commune</h6></a>
+        </div>
+
+          <div class=" navbar shadow-1 airforce dark-4">
+          
+          </div>
+    </header>
+
+<main>
+
+        {% for message in app.flashes('error') %}
+            <div class="col-xs4">
+                <div class="p-3 my-2 rounded-2 error">{{message}}</div>
+            </div>
+        {% endfor %}
+
+
+
+<div class="bleu">
+<div class="grix xs2 container">
+<div class="col-xs4">
+    <h4>Modification du mot de passe de {{app.user.firstname}}  {{app.user.name}}</h4></div>
+   
+       <form method="post">
+            <div class="form-field">
+                <label for="pass">Mot de passe</label>
+                <input type="password" id="pass" name="pass" class="form-control">
+            </div>
+            <div class="form-field">
+                <label for="pass">Confirmer le mot de passe</label>
+                <input type="password" id="pass2" name="pass2" class="form-control">
+            </div>
+            <button class="btn blue">Valider</button>
+        </form>
+
+
+  </div>
+</div>
+</div>
+
+</main>
+</body>
+{% endblock %}

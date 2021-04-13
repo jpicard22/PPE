@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{app.user.firstname}}  {{app.user.name}}{% endblock %}
+
+{% block body %}
+
+<body class="layout">
+    <header>
+        
+        <div class="  navbar shadow-2 grey light-3 navbar shadow-1 grey light-3 justify-content-center" style="height:80px">
+            <a href="{{ path('Pouzy') }}" class="title  ">Biblio-Book Pouzy-Mésangy</a>
+        </div>
+
+        <div class="navbar shadow-1 grey dark-1 justify-content-center">
+            <a href="" class="navbar-brand"><h6>La bibliothèque numérique de votre commune</h6></a>
+        </div>
+
+          <div class=" navbar shadow-1 airforce dark-4">
+
+             <div class="btn small rounded-2  blue press">
+                    <a href="{{ path('livres') }}" class="connect">Les livres disponibles
+                    </a>
+            </div>
+          
+          </div>
+    </header>
+
+<main>
+
+    
+
+
+
+<div class="bleu">
+    <div class="grix xs2 container">
+        <div class="col-xs4">
+            <h4>Profil de {{app.user.firstname}}  {{app.user.name}}</h4>
+        </div>
+                <div class="col-xs1">Nom : </div>
+                <div class="col-xs3">{{app.user.name}}</div>
+                <div class="col-xs1">Prénom : </div>
+                <div class="col-xs3">{{app.user.firstname}}</div>
+                <div class="col-xs1">Email : </div>
+                <div class="col-xs3">{{app.user.email}}</div>
+
+                <div class="col-xs4">
+                    <a href="{{ path('editprofil') }}" class="btn blue">Modifier le profil</a>
+                    <a href="{{ path ('editpass') }}" class="btn blue">Modifier le mot de passe</a>
+                </div>
+
+                <div class=" col-xs4">
+                    <h4>livres de {{app.user.firstname}}  {{app.user.name}} ({{ app.user.livres|length}}) </h4>
+                </div>
+
+                    {% for livre in app.user.livres %}
+                    <div class="col-xs1">Titre : </div>
+                    <div class="col-xs3">{{ livre.getTitreL }}</div>
+                    {% endfor %}
+
+    
+
+            <div class=" col-xs4">
+                <h4>Mes livres loués ({{ app.user|length}}) </h4>
+            </div>
+
+                    {% for livre in app.user.livres %}
+                    <div class="col-xs1">Titre : </div>
+                    <div class="col-xs3">{{ livre.getTitreL }}</div>
+                    <div class="col-xs1">Date d'emprunt : </div>
+                    <div class="col-xs3">{{ livre.getTitreL }}</div>
+                    <div class="col-xs1">Delais d'emprunt : </div>
+                    <div class="col-xs3">{{ livre.getTitreL }}</div>
+                    {% endfor %}
+
+        
+    </div>
+</div>
+
+</main>
+</body>
+{% endblock %}
