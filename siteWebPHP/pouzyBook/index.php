@@ -19,6 +19,7 @@ $livreList = array();
 $categorieList = array();
 $user = '';
 $langue = '';
+$exemplaire = '';
 $categorie = '';
 $titre = '';
 $nombrePages = '';
@@ -31,6 +32,7 @@ if (!empty($_POST)) {
     // Récupération des valeurs du formulaire dans des variables
     $user = isset($_POST['users_id']) ? $_POST['users_id'] : '';
     $langue = isset($_POST['langue_id']) ? $_POST['langue_id'] : '';
+    $exemplaire = isset($_POST['exemplaire_id']) ? $_POST['exemplaire_id'] : '';
     $categorie = isset($_POST['categorie_id']) ? $_POST['categorie_id'] : '';
     $titre = isset($_POST['titre_l']) ? $_POST['titre_l'] : '';
     $nombrePages = isset($_POST['nombre_pages']) ? $_POST['nombre_pages'] : '';
@@ -41,8 +43,8 @@ if (!empty($_POST)) {
     // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
     
     // TO DO #3 Insertion en DB d'un livre
-    $insertQuery = "INSERT INTO `livre` (users_id, langue_id, categorie_id, titre_l, nombre_pages_l, edition_l, auteur)
-    VALUES ('{$user}', '{$langue}', '{$categorie}', '{$titre}', '{$nombrePages}', '{$edition}', '{$auteur}');
+    $insertQuery = "INSERT INTO `livre` (users_id, langue_id, exemplaire_id, categorie_id, titre_l, nombre_pages_l, edition_l, auteur)
+    VALUES ('{$user}', '{$langue}', '{$exemplaire}', '{$categorie}', '{$titre}', '{$nombrePages}', '{$edition}', '{$auteur}');
     
     ";
     // TODO #3 exécuter la requête qui insère les données
@@ -77,6 +79,13 @@ $sqlLangue = 'SELECT `id`, `langue_l` from `langue`;
 $pdoStatement1 = $pdo->query($sqlLangue);
 
 
+
+$sqlExemplaire = 'SELECT `id`, `users_id`, `livre_id` from `exemplaire`;
+';
+$pdoStatement2 = $pdo->query($sqlExemplaire);
+
+
+
 $sqlUser = 'SELECT `id`, `name` from `users`;
 ';
 $pdoStatement3 = $pdo->query($sqlUser);
@@ -98,6 +107,8 @@ $pdoStatement3 = $pdo->query($sqlUser);
 */ 
 
 $langueList = $pdoStatement1->fetchAll(PDO::FETCH_KEY_PAIR);
+
+$exemplaireList = $pdoStatement2->fetchAll(PDO::FETCH_COLUMN);
 
 $userList = $pdoStatement3->fetchAll(PDO::FETCH_KEY_PAIR);
 
@@ -151,3 +162,14 @@ $livreList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 require __DIR__.'/templates/'.$currentPage.'.php';
 
 require __DIR__.'/classes/delta.php';
+
+
+
+
+
+
+
+
+
+
+?> 
