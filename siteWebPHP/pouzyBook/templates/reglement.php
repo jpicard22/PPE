@@ -1,21 +1,19 @@
-
 <?php
 
 
-foreach($dataReglement as $reglement) :?>
-    <h2><?=$reglement;?></h2>
-    <?php endforeach;?>
+foreach ($dataReglement as $reglement) : ?>
+    <h2><?= $reglement; ?></h2>
+<?php endforeach; ?>
 
-    $pdo = $dbConnexion->getPdo();
+$pdo = $dbConnexion->getPdo();
 
 </main>
-    <footer>
-        <p class="text-center">
+<footer>
+    <p class="text-center">
         <?= date('Y') ?> &copy; Site réalisé rapidement par une personne souhaitant garder l'anonymat
-        </p>
-    </footer>
-    </div>
+    </p>
+</footer>
+</div>
 </body>
+
 </html>
-
-

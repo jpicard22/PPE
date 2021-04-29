@@ -1,18 +1,18 @@
 <?php
 
-require __DIR__.'/inc/db.php';
+require __DIR__ . '/inc/db.php';
 
 session_start();
 
-if (isset($_POST['email']) && isset($_POST['password'])){
+if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    $dbConnexion = new DB ;
+    $dbConnexion = new DB;
     $pdo = $dbConnexion->getPdo();
 
     print_r($_POST);
     //die;
 
-    if($_POST['email']!=="" && $_POST['password']!==""){
+    if ($_POST['email'] !== "" && $_POST['password'] !== "") {
 
         $pdoConnexionSecured = $pdo->prepare("SELECT * FROM users WHERE `email`=:email and `password`=:password");
         $pdoConnexionSecured->bindValue(':email', $_POST['email']);
@@ -27,16 +27,13 @@ if (isset($_POST['email']) && isset($_POST['password'])){
             var_dump($_SESSION['email']);
             //die;
             header('Location: privatespace.php');
-        } 
-        else {
+        } else {
             header('Location: connexion.php?erreur=1');
-        }   
-    } 
-    else {
+        }
+    } else {
         // fonction header me permet de faire une redirection cf la documentation : https://www.php.net/manual/fr/function.header.php
         header('Location: connexion.php?erreur=1');
     }
-} 
-else {
+} else {
     header('Location: connexion.php');
 }

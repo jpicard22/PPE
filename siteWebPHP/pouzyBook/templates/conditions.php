@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,11 +13,12 @@
 
     <title>Les conditions</title>
 </head>
+
 <body>
     <div class="container">
-    <header class="my-2">
-      
+        <header class="my-2">
 
 
-    </header>
-    <main class="my-3">
+
+        </header>
+        <main class="my-3">
