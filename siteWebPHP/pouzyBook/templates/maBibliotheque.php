@@ -84,7 +84,6 @@ session_start();?>
                       
                         <th scope="col">Utilisateur</th>
                         <th scope="col">Langue</th>
-                        <th scope="col">N° d'exemplaire</th>
                         <th scope="col">Categorie</th>
                         <th scope="col">Titre</th>
                         <th scope="col">Nombre de pages</th>
@@ -100,7 +99,6 @@ session_start();?>
                        
                         <td><?= $livre['users_id'];?></td>
                         <td><?= $livre['langue_id'];?></td>
-                        <td><?= $livre['exemplaire_id'];?></td>
                         <td><?= $livre['categorie_id'];?></td>
                         <td><?= $livre['titre_l'];?></td>
                         <td><?= $livre['nombre_pages_l'];?></td>

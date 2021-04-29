@@ -43,8 +43,8 @@ if (!empty($_POST)) {
     // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
     
     // TO DO #3 Insertion en DB d'un livre
-    $insertQuery = "INSERT INTO `livre` (users_id, langue_id, exemplaire_id, categorie_id, titre_l, nombre_pages_l, edition_l, auteur)
-    VALUES ('{$user}', '{$langue}', '{$exemplaire}', '{$categorie}', '{$titre}', '{$nombrePages}', '{$edition}', '{$auteur}');
+    $insertQuery = "INSERT INTO `livre` (users_id, langue_id, categorie_id, titre_l, nombre_pages_l, edition_l, auteur)
+    VALUES ('{$user}', '{$langue}', '{$categorie}', '{$titre}', '{$nombrePages}', '{$edition}', '{$auteur}');
     
     ";
     // TODO #3 exécuter la requête qui insère les données
@@ -80,12 +80,6 @@ $pdoStatement1 = $pdo->query($sqlLangue);
 
 
 
-$sqlExemplaire = 'SELECT `id`, `users_id`, `livre_id` from `exemplaire`;
-';
-$pdoStatement2 = $pdo->query($sqlExemplaire);
-
-
-
 $sqlUser = 'SELECT `id`, `name` from `users`;
 ';
 $pdoStatement3 = $pdo->query($sqlUser);
@@ -107,8 +101,6 @@ $pdoStatement3 = $pdo->query($sqlUser);
 */ 
 
 $langueList = $pdoStatement1->fetchAll(PDO::FETCH_KEY_PAIR);
-
-$exemplaireList = $pdoStatement2->fetchAll(PDO::FETCH_COLUMN);
 
 $userList = $pdoStatement3->fetchAll(PDO::FETCH_KEY_PAIR);
 

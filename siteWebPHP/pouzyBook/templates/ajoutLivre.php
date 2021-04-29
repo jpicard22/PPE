@@ -77,14 +77,6 @@ session_start(); ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="emplaire_id">Exemplaire</label>
-                            <select class="custoGenre" id="id" name="exemplaire_id">
-                                <option>-<?php foreach ($exemplaireList as $currentExemplaireId => $currentExemplaireName) : ?>
-                                <option value="<?= $currentExemplaireId ?>"><?= $currentExemplaireName ?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="categorie_id">Catégorie</label>
                             <select class="custoGenre" id="id" name="categorie_id">
                                 <option>-<?php foreach ($genreList as $currentGenreId => $currentGenreName) : ?>
