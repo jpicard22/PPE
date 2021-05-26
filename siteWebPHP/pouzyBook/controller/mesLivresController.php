@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require '../inc/db.php';
 
@@ -21,29 +22,28 @@ if (isset($_GET['ordermaBibliotheque'])) {
 
 
 
+$_SESSION['user']['id'];
 
-$sql = 
-        'SELECT * FROM `livre` join users on users.id = livre.users_id where users_id = 3';
+$sql = 'SELECT * FROM `livre` join users on users.id = livre.users_id where users_id = ' .$_SESSION['user']['id'];
 // Si un tri a été demandé, on réécrit la requête
 if (!empty($_GET['ordermaBibliotheque'])) {
     // Récupération du tri choisi
     $ordermeslivres = trim($_GET['ordermaBibliotheque']);
     if ($ordermeslivres == 'titre') {
         // TODO #2 écrire la requête avec un tri par titre croissant
-        $sql = 'SELECT * from `livre` WHERE  `users_id`
+        $sql = 'SELECT * from `livre` WHERE `users_id`= ' .$_SESSION['user']['id'] .'
         ORDER BY `titre_l` ASC';
     }
     else if ($ordermeslivres == 'auteur') {
         // TODO #2 écrire la requête avec un tri par autheur croissant
-        $sql = 'SELECT * from `livre` WHERE  `users_id` = ' .$owner .'
-        ORDER BY `auteur` ASC 
-        ;';
+        $sql = 'SELECT * from `livre` WHERE  `users_id` = ' .$_SESSION['user']['id'] .'
+        ORDER BY `auteur` ASC';
     }
 }
 
 $pdo = $dbConnexion->getPdo();
 $pdoStatement = $pdo->query($sql);
-var_dump($pdoStatement);
+//var_dump($pdoStatement);
 $livreList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
 

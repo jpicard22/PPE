@@ -69,7 +69,7 @@ session_start(); ?>
                             <div class="form-group">
                                 <label for="users_id">Utilisateur</label>
                                 <select class="custoGenre" id="users_id" name="name">
-                                    <option><?= $_SESSION['yoyo']; ?></option>
+                                    <option><?= $_SESSION['user']; ?></option>
                                 </select>
                             </div>
                             <div class="form-group">

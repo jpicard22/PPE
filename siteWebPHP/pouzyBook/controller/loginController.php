@@ -30,8 +30,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $isPasswordCorrect = password_verify($passToCheck, $result['password']);
 
         if ($isPasswordCorrect != 0) {
-            $_SESSION['yoyo'] = $result['email'];
-            var_dump($_SESSION['email']);
+            $_SESSION['user'] = $result;
+            var_dump($_SESSION['user']);
             //die;
             header('Location: ../templates/privatespace.php');
         } else {

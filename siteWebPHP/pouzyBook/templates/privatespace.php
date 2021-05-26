@@ -56,8 +56,9 @@ session_start(); ?>
 
 
             <div class="content-message">
-                <h5>Bonjour <?= $_SESSION['yoyo']; ?></h5>
+                <h5>Bonjour <?= $_SESSION['user']['email']; ?></h5>
                 <p> bienvenue dans votre espace privé </p>
+                <?=var_dump($_SESSION['user']);?>
             </div>
 
     </header>

@@ -1,6 +1,4 @@
-<?php
 
-session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +47,7 @@ session_start(); ?>
             <ul class="navbar shadow-1 airforce dark-4">
                 <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../templates/privatespace.php">Mon espace</a></li>
                 <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../index.php?page=ajoutLivre">Ajout d'un livre</a></li>
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../templates/index.php?page=laBibliotheque">La bibliothèque</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../index.php?page=laBibliotheque">La bibliothèque</a></li>
             </ul>
         </nav>
 
@@ -77,7 +75,7 @@ session_start(); ?>
 
                     <a href="maBibliotheque.php?page=maBibliotheque" class="btn btn-dark">Annuler le tri</a><br>
 
-                <?php endif; var_dump($_SESSION);?>
+                <?php endif; //var_dump($_SESSION);?>
                 
                 <br>
                 <table class="table table-striped">

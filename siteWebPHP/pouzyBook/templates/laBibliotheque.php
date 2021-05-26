@@ -49,7 +49,7 @@ session_start(); ?>
             <ul class="navbar shadow-1 airforce dark-4">
                 <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="templates/privatespace.php">Mon espace</a></li>
                 <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=ajoutLivre">Ajout d'un livre</a></li>
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=maBibliotheque">Mes livres</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="controller/mesLivresController.php?page=maBibliotheque">Mes livres</a></li>
             </ul>
         </nav>
 
@@ -100,7 +100,7 @@ session_start(); ?>
                                 <td><?= $livre['users_id']; ?></td>
                                 <!--ajouter session -->
                                 <td><?= $livre['langue_id']; ?></td>
-                                <td><?= $livre['categorie_id']; ?></td>
+                                <td><?= $livre['categorie_id']= $categorieList['id']; ?></td>
                                 <td><?= $livre['titre_l']; ?></td>
                                 <td><?= $livre['nombre_pages_l']; ?></td>
                                 <td><?= $livre['edition_l']; ?></td>
