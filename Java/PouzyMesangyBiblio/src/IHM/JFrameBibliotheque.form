@@ -29,23 +29,13 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelBibliotheque" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                              <Component id="JButtonSupprimer" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="747" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" alignment="0" min="-2" pref="747" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="jButtonAjouter" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jButtonAjouter" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelBibliotheque" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="747" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="0" min="-2" pref="747" max="-2" attributes="0"/>
+                  <Component id="JButtonSupprimer" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="410" max="32767" attributes="0"/>
           </Group>
@@ -62,9 +52,9 @@
               <Component id="JButtonSupprimer" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="63" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jButtonAjouter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Component id="JButtonRechercher" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>

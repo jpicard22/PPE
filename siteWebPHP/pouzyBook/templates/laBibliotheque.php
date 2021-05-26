@@ -13,7 +13,7 @@ session_start(); ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/css/axentix.min.css">
@@ -47,9 +47,9 @@ session_start(); ?>
 
         <nav>
             <ul class="navbar shadow-1 airforce dark-4">
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../templates/privatespace.php">Mon espace</a></li>
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../index.php?page=ajoutLivre">Ajout d'un livre</a></li>
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="../templates/index.php?page=laBibliotheque">La bibliothèque</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="templates/privatespace.php">Mon espace</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=ajoutLivre">Ajout d'un livre</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=maBibliotheque">Mes livres</a></li>
             </ul>
         </nav>
 
@@ -57,28 +57,27 @@ session_start(); ?>
     <main>
         <div class="container">
             <div class="jumbotron">
-                <h1 class="display-4">Ma bibliothèque</h1>
+                <h1 class="display-4">La bibliothèque</h1>
 
                 <?php if (empty($_SESSION)) : ?>
                     <h1>Vous n'êtes pas autorisé à voir cette page</h1>
                 <?php else : ?>
-            
+
             </div>
             <h1></h1>
             <div class="row">
 
-            <form action="../controller/mesLivresController.php" method="POST">
 
-                <a href="mesLivresController.php?ordermaBibliotheque=titre_l" class="btn btn-primary">Trier par titre</a>&nbsp;
-                <a href="mesLivresController.php?ordermaBibliotheque=auteur" class="btn btn-info">Trier par auteur</a>&nbsp;
+                <a href="index.php?order=titre_l&amp;page=maBibliotheque" class="btn btn-primary">Trier par titre</a>&nbsp;
+                <a href="index.php?order=auteur&amp;page=maBibliotheque" class="btn btn-info">Trier par auteur</a>&nbsp;
 
 
-                <?php if (isset($_GET['ordermeslivres'])) : ?>
+                <?php if (isset($_GET['order'])) : ?>
 
-                    <a href="maBibliotheque.php?page=maBibliotheque" class="btn btn-dark">Annuler le tri</a><br>
+                    <a href="index.php?page=maBibliotheque" class="btn btn-dark">Annuler le tri</a><br>
 
-                <?php endif; var_dump($_SESSION);?>
-                
+                <?php endif; ?>
+
                 <br>
                 <table class="table table-striped">
                     <thead>
@@ -98,7 +97,7 @@ session_start(); ?>
                         <?php foreach ($livreList as $livre) : ?>
                             <tr>
 
-                                <td><?= $livre['users_id' ]; ?></td>
+                                <td><?= $livre['users_id']; ?></td>
                                 <!--ajouter session -->
                                 <td><?= $livre['langue_id']; ?></td>
                                 <td><?= $livre['categorie_id']; ?></td>
@@ -111,7 +110,7 @@ session_start(); ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            </form>
+
 
 
                 <!-- Optional JavaScript -->
@@ -126,4 +125,4 @@ session_start(); ?>
     </main>
 
 <?php endif; ?>
-<?php include 'footer.php'; ?>
+<?php include 'templates/footer.php'; ?>

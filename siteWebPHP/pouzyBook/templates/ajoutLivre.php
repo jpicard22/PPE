@@ -48,77 +48,81 @@ session_start(); ?>
 
         <nav>
             <ul class="navbar shadow-1 airforce dark-4">
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="privatespace.php">Mon espace</a></li>
-                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=maBibliotheque">Ma bibliothèque</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="templates/privatespace.php">Mon espace</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=maBibliotheque">Mes livres</a></li>
+                <li class="nav-item btn small rounded-2  blue press"><a class="nav-link" href="index.php?page=laBibliotheque">la bibliothèque</a></li>
             </ul>
         </nav>
 
     </header>
-    <div class="container">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-header">Ajout</div>
-                <div class="card-body">
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <label for="users_id">Utilisateur</label>
-                            <select class="custoGenre" id="users_id" name="name">
-                                <option>-<?php foreach ($userList as $currentUserId => $currentUserName) : ?>
-                                <option value="<?= $currentUserId ?>"><?= $currentUserName ?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="langue_id">Langue</label>
-                            <select class="custoGenre" id="id" langue="langue_l">
-                                <option>-<?php foreach ($langueList as $currentLangueId => $currentLangueLangue) : ?>
-                                <option value="<?= $currentLangueId ?>"><?= $currentLangueLangue ?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="categorie_id">Catégorie</label>
-                            <select class="custoGenre" id="id" name="categorie_id">
-                                <option>-<?php foreach ($genreList as $currentGenreId => $currentGenreName) : ?>
-                                <option value="<?= $currentGenreId ?>"><?= $currentGenreName ?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="titre_l">Titre</label>
-                            <input type="text" class="form-control" name="titre_l" id="titre_l" placeholder="">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre_pages_l">Nombre de pages</label>
-                            <input type="text" class="form-control" name="nombre_pages_l" id="nombre_pages_l" placeholder="">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <label for="edition_l">Edition</label>
-                            <input type="text" class="form-control" name="edition_l" id="edition_l" placeholder="">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <label for="auteur">Auteur</label>
-                            <input type="text" class="form-control" name="edition_l" id="edition_l" placeholder="">
-                            </input>
-                        </div>
 
-                        <button type="submit" class="btn btn-success btn-block">Ajouter</button>
-                    </form>
+    <?php if (empty($_SESSION)) : ?>
+        <h1>Vous n'êtes pas autorisé à voir cette page</h1>
+    <?php else : ?>
+
+        <div class="container">
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-header">Ajout</div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="users_id">Utilisateur</label>
+                                <select class="custoGenre" id="users_id" name="name">
+                                    <option><?= $_SESSION['yoyo']; ?></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="langue_id">Langue</label>
+                                <select class="custoGenre" id="id" langue="langue_l">
+                                    <option>-<?php foreach ($langueList as $currentLangueId => $currentLangueLangue) : ?>
+                                    <option value="<?= $currentLangueId ?>"><?= $currentLangueLangue ?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="categorie_id">Catégorie</label>
+                                <select class="custoGenre" id="id" name="categorie_id">
+                                    <option>-<?php foreach ($genreList as $currentGenreId => $currentGenreName) : ?>
+                                    <option value="<?= $currentGenreId ?>"><?= $currentGenreName ?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="titre_l">Titre</label>
+                                <input type="text" class="form-control" name="titre_l" id="titre_l" placeholder="">
+                                </input>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre_pages_l">Nombre de pages</label>
+                                <input type="text" class="form-control" name="nombre_pages_l" id="nombre_pages_l" placeholder="">
+                                </input>
+                            </div>
+                            <div class="form-group">
+                                <label for="edition_l">Edition</label>
+                                <input type="text" class="form-control" name="edition_l" id="edition_l" placeholder="">
+                                </input>
+                            </div>
+                            <div class="form-group">
+                                <label for="auteur">Auteur</label>
+                                <input type="text" class="form-control" name="edition_l" id="edition_l" placeholder="">
+                                </input>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block">Ajouter</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
+    <?php endif; ?>
     <?php include 'templates/footer.php'; ?>
     </main>

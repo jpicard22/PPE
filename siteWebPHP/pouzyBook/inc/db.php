@@ -35,9 +35,3 @@
                 return $this->pdo;
             }
         }
-?>
-   
-
-
-
-

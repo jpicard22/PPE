@@ -9,12 +9,16 @@ import entities.Bibliotheque;
 import services.CBDD;
 import services.CParametresStockageBDD;
 import IHM.JFrameBibliotheque;
+import IHM.NewJFrameLogin;
 import entities.Livre;
+import entities.Users;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import security.BCrypt;
 import services.CTableLivres;
+import services.CTableUsers;
 
 /**
  *
@@ -27,17 +31,63 @@ public class App {
     public Bibliotheque biblio;
     public JFrameBibliotheque jFrameBiblio;
     public CTableLivres tableLivres;
+    public CTableUsers tableUsers;
+    public NewJFrameLogin jFrameLogin;
    
     
    // travailler dans la classe ci-dessous 
     
+    public void connexion(String email, String password){
+        
+        // pour rentrer un mot de passe crypté
+        
+//        Users monUser = this.tableUsers.lireUnLogin(email);
+//        
+//        System.out.println(monUser.getDate_naissance());
+//        
+//        this.verifMotDePass(monUser.getPassword(), password, false);
+        
+        
+        
+        
+//        if (this.jFrameLogin.tableUsers.lireUnUser(email, password) != null){
+//           
+//                BCrypt.checkpw(password, hashedPassword);
+//            
+       // }
+        
+       // login ok , il faut mettre le password puis le vérifier 
+        
+    } 
+    
+    
+//    public boolean verifMotDePass(String passwordBDD, String passwordIhm, boolean security){
+//        
+//        if (security){
+//             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }else{
+//        
+//        return passwordBDD.equals(passwordIhm);
+//        }   
+//    
+//    }
+    
+  
     public void runBibliothequeIHM() {
+        
+        
         
     // j'initialise les objets 
         biblio = new Bibliotheque();
         jFrameBiblio = new JFrameBibliotheque();
-        tableLivres = new CTableLivres(new CBDD(new CParametresStockageBDD("parametresBdd.properties")));
         jFrameBiblio.app = this;
+        
+        tableLivres = new CTableLivres(new CBDD(new CParametresStockageBDD("parametresBdd.properties")));
+        tableUsers = new CTableUsers(new CBDD(new CParametresStockageBDD("parametresBdd.properties")));
+       
+        jFrameLogin = new NewJFrameLogin();
+        this.jFrameLogin.app = this;
+     
         this.majBiblio(); //mise a jour de la biblio
         this.afficherListejTableBiblio();
         
@@ -45,7 +95,7 @@ public class App {
 
                            // tableau 
         this.jFrameBiblio.getjTableBibliotheque().setRowSelectionInterval(0, 0); // selectionne les 2 premieres lignes
-        jFrameBiblio.setVisible(true);
+        jFrameLogin.setVisible(true);
 
     }
 
@@ -147,7 +197,7 @@ public class App {
 //       tableLivres.supprimerLivre("45");
 
     }
-    
+
 
 
     
@@ -174,6 +224,14 @@ public class App {
 //monChampNom.setText(s);
 //monChampAdresse.setText(s2);
 //etc
+
+    private static class JFrameLogin {
+
+        public JFrameLogin() {
+        }
+    }
+
+  
  
         
         

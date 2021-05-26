@@ -5,11 +5,19 @@
  */
 package entities;
 
+import services.CBDD;
+
 /**
  *
  * @author JPicard
  */
-public class Inscrit {
+public class Users {
+    
+     protected CBDD bdd;
+
+    public Users(CBDD bdd) {
+        this.bdd = bdd;
+    }
      /*
     La liste des attributs. Ce sont des variables qui ont une "durée de vie" longue.
     Tant que l'objet créé à partir de cette classe existe, ses attributs existent aussi.
@@ -35,7 +43,7 @@ public class Inscrit {
     nommer les paramètres comme les attributs. Attention donc à bien différencier
     les uns des autres grace à "this".
      */
-    public Inscrit(String email, String roles, String password, String is_verified, String date_naissance, String name, String first_name, String rue, String cp) {
+    public Users(String email, String roles, String password, String is_verified, String date_naissance, String name, String first_name, String rue, String cp) {
         this.email = email;
         this.roles = roles;
         this.password = password;
@@ -47,7 +55,7 @@ public class Inscrit {
         this.cp = cp;
     }
 
-   public Inscrit(String id, String email, String roles, String password, String is_verified, String date_naissance, String name, String first_name, String rue, String cp) {
+   public Users(String id, String email, String roles, String password, String is_verified, String date_naissance, String name, String first_name, String rue, String cp) {
         this.id = id;
         this.email = email;
         this.roles = roles;
@@ -66,15 +74,19 @@ public class Inscrit {
     Dans cet état il est obligatoire d'utiliser le contructeur qui remplit tous les
     attributs avec des chaines de caractères.
      */
-    public Inscrit() {
+    public Users() {
     }
 
     /**
      * Un constructeur pour faire un livre juste avec l'id
      * @param idString 
      */
-    public Inscrit(String idString) {
+    public Users(String idString) {
         this.id = idString;
+    }
+
+    public Users(String id, String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getId() {
