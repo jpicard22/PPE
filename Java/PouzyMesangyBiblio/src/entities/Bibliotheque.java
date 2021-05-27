@@ -24,6 +24,7 @@ public class Bibliotheque {
      * attribut où les ranger.
      */
     private ArrayList<Livre> listeLivres = new ArrayList<>();
+    private ArrayList<User> listeUsers = new ArrayList<>();
 
     /**
      * Méthode pour enregistre un livre dans la liste en attribut.
@@ -56,5 +57,20 @@ public class Bibliotheque {
 
     public ArrayList<Livre> getListeLivres() {
         return listeLivres;
+    }
+
+    public ArrayList<User> getListeUsers() {
+        return listeUsers;
+    }
+
+    public void setListeUsers(ArrayList<User> listeUsers) {
+        this.listeUsers = listeUsers;
+    }
+
+    private static class User {
+
+        public User() {
+           
+        }
     }
 }

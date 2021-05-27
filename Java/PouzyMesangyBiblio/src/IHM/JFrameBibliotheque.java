@@ -49,7 +49,8 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
         jButtonAjouter = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTableAjouterLivreTableau = new javax.swing.JTable();
-        JButtonRechercher = new java.awt.Button();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableUser = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,7 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableBibliotheque.setColumnSelectionAllowed(true);
         jTableBibliotheque.setFocusable(false);
         jScrollPane1.setViewportView(jTableBibliotheque);
         jTableBibliotheque.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -129,22 +131,37 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
         jScrollPane2.setViewportView(JTableAjouterLivreTableau);
         JTableAjouterLivreTableau.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        JButtonRechercher.setActionCommand("Rechercher");
-        JButtonRechercher.setLabel("Rechercher");
-        JButtonRechercher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonRechercherActionPerformed(evt);
+        jTableUser.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "email", "date de naissance", "nom", "prenom", "rue", "cp"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jTableUser.setFocusable(false);
+        jScrollPane3.setViewportView(jTableUser);
+        jTableUser.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(506, 506, 506)
-                .addComponent(JButtonRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +169,8 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
                     .addComponent(jLabelBibliotheque)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JButtonSupprimer))
+                    .addComponent(JButtonSupprimer)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 410, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,15 +180,15 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
                 .addComponent(jLabelBibliotheque)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JButtonSupprimer)
                 .addGap(52, 52, 52)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAjouter)
-                .addGap(77, 77, 77)
-                .addComponent(JButtonRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,29 +208,11 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
+    
     private void JTableAjouterLivreTableauAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTableAjouterLivreTableauAncestorAdded
         // TODO add your handling code here:
         app.afficherListejTableBiblio();
     }//GEN-LAST:event_JTableAjouterLivreTableauAncestorAdded
-
-    private void JButtonRechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonRechercherActionPerformed
-        // TODO add your handling code here:
-        
-        app.tableLivres.lire1Livre();
-//         int res = -1;
-//        if (bdd.connecter() == true) {
-//            String req = "INSERT INTO 
-//         ResultSet rs = stmt.executeQuery("SELECT id FROM Assure where id = " + monChampId.getText());
-//            while(rs.next()){
-//                
-//                String s = rs.getString("NOM_ASSURE");
-//                String s2 = rs.getString("ADRESSE");
-//}
-// 
-//                    monChampNom.setText(s);
-//                    monChampAdresse.setText(s2);
- 
-    }//GEN-LAST:event_JButtonRechercherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,14 +253,15 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button JButtonRechercher;
     private javax.swing.JButton JButtonSupprimer;
     private javax.swing.JTable JTableAjouterLivreTableau;
     private javax.swing.JButton jButtonAjouter;
     private javax.swing.JLabel jLabelBibliotheque;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableBibliotheque;
+    private javax.swing.JTable jTableUser;
     // End of variables declaration//GEN-END:variables
 
     public JTable getjTableBibliotheque() {
@@ -271,6 +272,14 @@ public class JFrameBibliotheque extends javax.swing.JFrame {
         return JTableAjouterLivreTableau;
     }
     
+
+    public JTable getjTableUser() {
+        return jTableUser;
+    }
+
+    public void setjTableUser(JTable jTableUser) {
+        this.jTableUser = jTableUser;
+    }
 }
 
 

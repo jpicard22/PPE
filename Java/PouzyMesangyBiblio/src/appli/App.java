@@ -90,6 +90,8 @@ public class App {
      
         this.majBiblio(); //mise a jour de la biblio
         this.afficherListejTableBiblio();
+        this.afficherUser();
+        
         
         
 
@@ -97,6 +99,13 @@ public class App {
         this.jFrameBiblio.getjTableBibliotheque().setRowSelectionInterval(0, 0); // selectionne les 2 premieres lignes
         jFrameLogin.setVisible(true);
 
+    }
+    
+    public void afficherUser(){
+        this.jFrameBiblio.app.tableUsers.lireUnUserId(1);
+        this.tableUsers.lireUnUserId(0);
+       
+        
     }
 
     public void majBiblio() { //mise a jour
