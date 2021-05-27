@@ -62,19 +62,19 @@ session_start(); ?>
                 <?php if (empty($_SESSION)) : ?>
                     <h1>Vous n'êtes pas autorisé à voir cette page</h1>
                 <?php else : ?>
-
+            <!--<div class="emprunte"> <p> vous avez bien emprunté le livre <?php echo $livreList['titre_l'];?>-->
             </div>
             <h1></h1>
             <div class="row">
 
 
-                <a href="index.php?order=titre_l&amp;page=maBibliotheque" class="btn btn-primary">Trier par titre</a>&nbsp;
-                <a href="index.php?order=auteur&amp;page=maBibliotheque" class="btn btn-info">Trier par auteur</a>&nbsp;
+                <a href="index.php?order=titre_l&amp;page=laBibliotheque" class="btn btn-primary">Trier par titre</a>&nbsp;
+                <a href="index.php?order=auteur&amp;page=laBibliotheque" class="btn btn-info">Trier par auteur</a>&nbsp;
 
 
                 <?php if (isset($_GET['order'])) : ?>
 
-                    <a href="index.php?page=maBibliotheque" class="btn btn-dark">Annuler le tri</a><br>
+                    <a href="index.php?page=laBibliotheque" class="btn btn-dark">Annuler le tri</a><br>
 
                 <?php endif; ?>
 
@@ -83,34 +83,50 @@ session_start(); ?>
                     <thead>
                         <tr>
 
-                            <th scope="col">Utilisateur</th>
+                            
                             <th scope="col">Langue</th>
-                            <th scope="col">Categorie</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Nombre de pages</th>
                             <th scope="col">Edition</th>
                             <th scope="col">Auteur</th>
+                            <th scope="col">Categorie</th>
+                            <th scope="col">Emprunter</th>
                         </tr>
                     </thead>
                     <tbody>
+<?php  
 
-                        <?php foreach ($livreList as $livre) : ?>
+foreach ($livreList as $livre) :
+
+$id_user =$_SESSION['user']['id'];
+$livre['id'];
+$sql = "INSERT INTO emprunt (id,users_id, dispo_em,date_em, delais_em)
+VALUES (null,null,?,NOW(),?)";
+$stmt= $pdo->prepare($sql);
+$resultat = $stmt->execute([$id_user, $livre['id']]);
+$reponse = $pdo->query('SELECT * FROM livre where id =' . $livre['id']);
+$donnees = $reponse->fetch();?>
+
+                     <?php foreach ($categorieList as $categorie) : ?>
                             <tr>
-
-                                <td><?= $livre['users_id']; ?></td>
                                 <!--ajouter session -->
                                 <td><?= $livre['langue_id']; ?></td>
-                                <td><?= $livre['categorie_id']= $categorieList['id']; ?></td>
                                 <td><?= $livre['titre_l']; ?></td>
                                 <td><?= $livre['nombre_pages_l']; ?></td>
                                 <td><?= $livre['edition_l']; ?></td>
                                 <td><?= $livre['auteur']; ?></td>
-                                <!--<td><?= $langueList[$livre['categorie_id']]; ?></td>-->
+                                
+                                <?php endforeach; ?>
+                                
+                                <td> <?= $categorie['categorie_c']; ?></td>
+
+
+                                
+                                <?php endforeach; ?>
+                                <td><button class="button3"><a href="templates/privatespace.php?id=<?php echo $result['id'];?>">Emprunter<a></button></td>
                             </tr>
-                        <?php endforeach; ?>
                     </tbody>
                 </table>
-
 
 
                 <!-- Optional JavaScript -->

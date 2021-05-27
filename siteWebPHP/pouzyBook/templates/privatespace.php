@@ -59,6 +59,8 @@ session_start(); ?>
                 <h5>Bonjour <?= $_SESSION['user']['email']; ?></h5>
                 <p> bienvenue dans votre espace privé </p>
                 <?=var_dump($_SESSION['user']);?>
+                
+               
             </div>
 
     </header>
@@ -66,55 +68,66 @@ session_start(); ?>
 
     <main style="width:auto">
 
-        <div class="dotted">
+    <div class="container">
 
-            <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
-
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExemple" data-slide-to="1"></li>
-                    <li data-target="#carouselExemple" data-slide-to="2"></li>
-                </ol>
-
-
-                <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-                        <img src="../images/reading-2605540_1920.jpg" alt="Carrousel slide 1" class="d-block">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="../images/book-112747_1920.jpg" alt="Carrousel slide 2" class="d-block">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="../images/storytelling-4203628_1920.jpg" alt="Carrousel slide 2" class="d-block">
-                    </div>
-
+<div class="card mt-4">
+    <div class="card-header text-center">
+    <h1>Mon profil</h1>
+    </div>
+    <div class="card-body">
+        <form method="post" action="modificationInfosPerso.php">
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Prenom</span>
                 </div>
-
-                <a href="#carouselExemple" class="carousel-control-prev" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="ture"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-
-                <a href="#carouselExemple" class="carousel-control-next" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-
+                <input type="text" class="form-control" name="prenom" placeholder=" <?php echo $_SESSION['user']['first_name'] ?>">
             </div>
 
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">nom</span>
+                </div>
+                <input type="text" class="form-control" name="nom" placeholder=" <?php echo $_SESSION['user']['name'] ?>">
+            </div>
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Date de naissance</span>
+                </div>
+                <input type="date" class="form-control" name="date_naissance" placeholder=" <?php echo $_SESSION['user']['date_naissance'] ?>">
+            </div>
+            
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Email</span>
+                </div>
+                <input type="text" class="form-control" name="email" placeholder=" <?php echo $_SESSION['user']['email'] ?>">
+            </div>
+           
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Adresse</span>
+                </div>
+                <input type="text" class="form-control" name="nom_rue" placeholder=" <?php echo $_SESSION['user']['rue'] ?>">
+            </div>
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Code Postale</span>
+                </div>
+                <input type="text" class="form-control" name="code_postal" placeholder=" <?php echo $_SESSION['user']['cp'] ?>">
+            </div>
 
-            <script>
-                $('.carousel').carousel({
+            <div class="input-group m-2">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Mot de passe actuel</span>
+                </div>
+                <input type="password" name="motDePasseActuel" class="form-control" required>
+            </div>
 
-                    pause: "null"
-
-                })
-            </script>
-
-        </div>
+            <button class="button2" type="submit">Modifier Mes informations</button>
+        </form>
+    </div>
+</div>
+</div>
 
 
 

@@ -17,6 +17,7 @@ $pdo = $dbConnexion->getPdo();
 // Initialisation de variables (évite les "NOTICE - variable inexistante")
 $livreList = array();
 $categorieList = array();
+$id = '';
 $user = '';
 $langue = '';
 $categorie = '';
@@ -30,6 +31,7 @@ $auteur = '';
 // Si le formulaire a été soumis
 if (!empty($_POST)) {
   // Récupération des valeurs du formulaire dans des variables
+  $id = isset($_POST['id']) ? $_POST['id'] : '';
   $user = isset($_POST['users_id']) ? $_POST['users_id'] : '';
   $langue = isset($_POST['langue_id']) ? $_POST['langue_id'] : '';
   $categorie = isset($_POST['categorie_id']) ? $_POST['categorie_id'] : '';
@@ -158,6 +160,22 @@ $pdo = $dbConnexion->getPdo();
 $pdoStatement = $pdo->query($sql);
 //var_dump($pdoStatement);
 $livreList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+$categorieList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+$sql = 'SELECT * FROM `categorie`';
+
+$pdo = $dbConnexion->getPdo();
+$pdoStatement5 = $pdo->query($sql);
+$categorieList = $pdoStatement5->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($livreList as $livre) :  
+$id = $livre['id'];
+$stmt = $pdo->prepare("SELECT * FROM livre WHERE id =?");
+$stmt->execute([$id]); 
+$result = $stmt->fetch();
+ endforeach; 
 
 
 

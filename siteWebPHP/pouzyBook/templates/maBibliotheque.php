@@ -82,31 +82,33 @@
                     <thead>
                         <tr>
 
-                            <th scope="col">Utilisateur</th>
+                           
                             <th scope="col">Langue</th>
-                            <th scope="col">Categorie</th>
+                           
                             <th scope="col">Titre</th>
                             <th scope="col">Nombre de pages</th>
                             <th scope="col">Edition</th>
-                            <th scope="col">Auteur</th>
+                            <th scope="col">Auteur</th> 
+                            <th scope="col">Categorie</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <?php foreach ($livreList as $livre) : ?>
+                        <?php foreach ($livreList as $livre) :  ?> 
                             <tr>
-
-                                <td><?= $livre['users_id' ]; ?></td>
                                 <!--ajouter session -->
                                 <td><?= $livre['langue_id']; ?></td>
-                                <td><?= $livre['categorie_id']; ?></td>
                                 <td><?= $livre['titre_l']; ?></td>
                                 <td><?= $livre['nombre_pages_l']; ?></td>
                                 <td><?= $livre['edition_l']; ?></td>
                                 <td><?= $livre['auteur']; ?></td>
-                                <!--<td><?= $langueList[$livre['categorie_id']]; ?></td>-->
+                                <?php endforeach; ?>
+                                <?php foreach ($categorieList as $categorie) : ?>
+                                <td> <?= $categorie['categorie_c']; ?></td>
+                                <?php endforeach; ?>
                             </tr>
-                        <?php endforeach; ?>
+                       
+                        
                     </tbody>
                 </table>
             </form>

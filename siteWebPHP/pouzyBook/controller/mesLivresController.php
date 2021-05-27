@@ -12,6 +12,7 @@ $pdo = $dbConnexion->getPdo();
 
 // Initialisation de variables (évite les "NOTICE - variable inexistante")
 $livreList = array();
+$categorieList = array();
 
 $currentOrder = 'ordermaBibliotheque';
 
@@ -41,11 +42,19 @@ if (!empty($_GET['ordermaBibliotheque'])) {
     }
 }
 
+
 $pdo = $dbConnexion->getPdo();
 $pdoStatement = $pdo->query($sql);
 //var_dump($pdoStatement);
 $livreList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+$sql = 'SELECT * FROM `categorie`';
+
+$pdo = $dbConnexion->getPdo();
+$pdoStatement5 = $pdo->query($sql);
+$categorieList = $pdoStatement5->fetchAll(PDO::FETCH_ASSOC);
 
 
 

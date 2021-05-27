@@ -16,7 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
 
             $newUserName = $_POST['email'];
             $newPass = $_POST['password'];
-            $newPassSecured = password_hash($newPass, PASSWORD_DEFAULT);
+            //$newPassSecured = password_hash($newPass, PASSWORD_DEFAULT);
           
             $newDateNaissance = $_POST['date_naissance'];
             $newName = $_POST['name'];
@@ -27,7 +27,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
             //var_dump($newPassSecured);
             $pdoConnexionSecured = $pdo->prepare('INSERT INTO users(email, password, date_naissance, name, first_name, rue, cp) VALUES (:email, :password, :date_naissance, :name, :first_name, :rue, :cp)');
             $pdoConnexionSecured->bindValue(':email', $newUserName);
-            $pdoConnexionSecured->bindValue(':password', $newPassSecured);
+            $pdoConnexionSecured->bindValue(':password', $newPass);//$newPassSecured);
           
             $pdoConnexionSecured->bindValue(':date_naissance', $newDateNaissance);
             $pdoConnexionSecured->bindValue(':name', $newName);
